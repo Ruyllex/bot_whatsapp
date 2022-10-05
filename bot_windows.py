@@ -30,7 +30,8 @@ def get_message():
     return pc.paste()
     
 def check_if_new_message():
-    check = nav_to_image('C://Users//ruymo//programacion//xd//bot_whatsapp//imagenes//no_leido.png',1,off_x=-30,off_y=0)
+    check = nav_to_image('C://Users//ruymo//programacion//xd//bot_whatsapp//imagenes//no_leido.png',0,off_x=-40,off_y=0)
+    mouse.click(Button.left,1)
     if check == 0:
         return False
     else:
@@ -42,14 +43,25 @@ def close_replybox():
 delay = 5
 last_message = ''
 
+def process_mesagge(mesagge):
+    respuesta = ""
+    if "hola" in mesagge.lower():
+        respuesta = "hola"
+    else:
+        respuesta = "No te entiendo todavia."
+    return respuesta
+
+
+
 sleep(3)
 while True:
     if not check_if_new_message():
         print("no hay mensajes")
     else:
+        print("recibi un mensaje")
         mensaje = get_message()
         last_message = mensaje
-        pt.write("Hola es el bot de Ruy en que te puedo ayudar?")
+        pt.write(process_mesagge(last_message))
         pt.press("enter")
     sleep(5)
 
