@@ -31,19 +31,26 @@ def get_message():
     
 def check_if_new_message():
     check = nav_to_image('C://Users//ruymo//programacion//xd//bot_whatsapp//imagenes//no_leido.png',1,off_x=-30,off_y=0)
-
     if check == 0:
         return False
     else:
         return True
 
-if check_if_new_message():
-    mensaje = get_message()    
-    print(mensaje)
-    cocina_txt = open("cocina.txt","w")
-    cocina_txt.write(mensaje)
-    cocina_txt.close()
+def close_replybox():
+    nav_to_image('C://Users//ruymo//programacion//xd//bot_whatsapp//imagenes//equis_wpps.png',1,off_x=0,off_y=0)
 
+delay = 5
+last_message = ''
 
-    
+sleep(3)
+while True:
+    if not check_if_new_message():
+        print("no hay mensajes")
+    else:
+        mensaje = get_message()
+        last_message = mensaje
+        pt.write("Hola es el bot de Ruy en que te puedo ayudar?")
+        pt.press("enter")
+    sleep(5)
+
 
