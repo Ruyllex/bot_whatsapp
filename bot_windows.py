@@ -39,7 +39,7 @@ def check_if_new_message():
 
 if check_if_new_message():
     mensaje = get_message()
-    pt.typewrite("Hola ryu este es el nuevo bot de ruy")
+    pt.typewrite("Hola este es el nuevo bot de ruy")
     pt.typewrite("El ultimo mensaje que mandaste fue:" + mensaje)
     pt.press("enter")
 
