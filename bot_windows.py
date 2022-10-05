@@ -30,7 +30,7 @@ def get_message():
     return pc.paste()
     
 def check_if_new_message():
-    check = nav_to_image('C://Users//ruymo//programacion//xd//bot_whatsapp//imagenes//no_leido.png',1,off_x=-20,off_y=0)
+    check = nav_to_image('C://Users//ruymo//programacion//xd//bot_whatsapp//imagenes//no_leido.png',1,off_x=-30,off_y=0)
 
     if check == 0:
         return False
