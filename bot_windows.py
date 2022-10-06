@@ -5,10 +5,22 @@ from pynput.mouse import Button, Controller
 from time import sleep
 import webbrowser
 
+
+
+FIN_ARCHIVO = ['999999',0,0,0]
 webbrowser.open("https://web.whatsapp.com")
 sleep(7)
 mouse = Controller()
 pt.FAILSAFE = True
+
+def leer_archivo(texto):
+    linea = texto.readline().rstrip('\n')
+    if linea:
+        linea = linea.split(',')
+    else:
+        linea = FIN_ARCHIVO
+    return linea
+
 def nav_to_image(image, clicks , off_x = 0, off_y = 0):
     position = pt.locateCenterOnScreen(image,confidence=0.8)
     if position is None:
@@ -49,6 +61,11 @@ def process_mesagge(mesagge):
         respuesta = "hola"
     else:
         respuesta = "No te entiendo todavia."
+        cocina = open("cocina.csv","r+")
+        linea = leer_archivo(cocina)
+        cocina.write("1")
+        print(linea)
+        cocina.close()
     return respuesta
 
 
@@ -62,7 +79,7 @@ while True:
         mensaje = get_message()
         last_message = mensaje
         pt.write(process_mesagge(last_message))
-        pt.press("enter")
+        #pt.press("enter")
     sleep(5)
 
 
